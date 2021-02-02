@@ -5,6 +5,12 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+type UserRepositoryInterface interface {
+  Find(name string) (*User, error)
+  Update(email string) error
+  Delete(user *User) error
+}
+
 type User struct {
   ID    string `json:"id" valid:"uuid"`
   Name  string `json:"name" valid:"notnull"`
